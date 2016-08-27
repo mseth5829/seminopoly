@@ -1,0 +1,36 @@
+table {
+  margin: 0 auto;
+}
+
+* {
+  font-family: "Baloo Paaji"
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: -30px;
+}
+
+#dice{
+  margin: 0 auto;
+  width: 105px;
+  height: 100px;
+  margin-bottom: -20px;
+}
+
+#dice1, #dice2 {
+  width: 50px;
+  height: 100px;
+  text-align: center;
+  font-size: 70px;
+  display: inline-block;
+}
+
+#roll{
+  text-align: center;
+  margin: none;
+}
+
+#dice:hover {
+  cursor: pointer;
+}
