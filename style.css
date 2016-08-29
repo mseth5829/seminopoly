@@ -1,21 +1,88 @@
-table {
-  margin: 0 auto;
+@font-face {
+    font-family:"Monopoly";
+    src: url("fonts/monopoly.ttf")
+}
+
+@font-face {
+    font-family:"Kabel";
+    src: url("fonts/kabel.ttf")
+}
+
+/*#board{
+  display: block;
+  margin-left: 300px;
+  position: absolute;
+  left: 50%;
+  margin-left: -425.5px;
+}*/
+
+#board {
+  display: block;
+  margin-left: 300px;
+  position: absolute;
+}
+
+#board img{
+  float: left;
+  position: relative;
+}
+
+.left {
+  position: relative;
+  top: -329px;
+}
+
+.right {
+  position:relative;
+  top: -659px;
+  left: 391px;
+}
+
+.bottom {
+  position:relative;
+  top: -623px;
+  right: 59px;
+}
+
+.extra {
+  position:relative;
+  top: -683.8px;
+  left: 391px;
+}
+
+.left img, .right img {
+  clear: left;
+}
+
+.middle img{
+  clear: left;
+  left: 60px;
 }
 
 * {
-  font-family: "Baloo Paaji"
+  font-family: "Monopoly"
 }
 
 h1 {
   text-align: center;
-  margin-bottom: -30px;
+  margin-bottom: -10px;
+}
+
+#begin {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: -20px;
+  font-family: "Baloo Paaji";
 }
 
 #dice{
   margin: 0 auto;
   width: 105px;
   height: 100px;
-  margin-bottom: -20px;
+  margin-top: 10px;
+  margin-bottom: -40px;
 }
 
 #dice1, #dice2 {
@@ -29,8 +96,140 @@ h1 {
 #roll{
   text-align: center;
   margin: none;
+  font-family: "Baloo Paaji";
 }
 
 #dice:hover {
   cursor: pointer;
+}
+
+#playerStats {
+  width: 200px;
+  display: inline-block;
+  height: 300px;
+  float: left;
+}
+
+#enemyStats {
+  float: right;
+  width: 200px;
+  display: inline-block;
+  height: 300px;
+  margin-right: 110px;
+}
+
+/*#promptc {
+  z-index: 5;
+  position:relative;
+  width: 200px;
+  height: 100px;
+  left: 50%;
+  margin-left: -100px;
+  top: 44%;
+  margin-top: -100px;
+  box-shadow: 10px 10px 37px 8px rgba(128,114,128,0.53);
+  -webkit-border-radius: 26px 26px 26px 26px;
+  border: 15px ridge #e3d6e3;
+  background: url(http://api.thumbr.it/whitenoise-361x370.png?background=f0edf0ff&noise=bab6ba&density=27&opacity=27);
+}*/
+
+
+#promptu {
+
+}
+
+#promptp {
+  z-index: 5;
+  position: relative;
+  top: 56%;
+  left: 50%;
+  width: 200px;
+  height: 280px;
+  text-align: center;
+  margin-left: -100px;
+  margin-top: -280px;
+  -webkit-border-radius: 26px;
+  border: 2px solid lavender;
+  background: url(http://api.thumbr.it/whitenoise-361x370.png?background=f0edf0ff&noise=bab6ba&density=27&opacity=27);
+}
+
+#promptp button{
+  margin-top: 5px;
+}
+
+#user {
+  box-sizing: border-box;
+  border:2px solid green;
+}
+
+#enemy {
+  box-sizing: border-box;
+  border:2px solid red;
+}
+
+.both {
+  box-sizing: border-box;
+  border:2px solid orange;
+}
+
+.pCard, .vCard, .uCard, .pCard-cover {
+  font-size: 10px;
+  height: 160px;
+  width: 150px;
+  border: 1px solid black;
+  padding: 10px;
+  padding-bottom: 30px;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-left: 50px;
+  box-shadow: 10px 10px 37px 8px rgba(128,114,128,0.53);
+}
+
+.pcardPrompt{
+  z-index: 6;
+  font-size: 7px;
+  height: 160px;
+  width: 150px;
+  border: 1px solid black;
+  padding: 10px;
+  padding-bottom: 30px;
+  text-align: center;
+  box-shadow: 10px 10px 37px 8px rgba(128,114,128,0.53);
+  background-color: white;
+  margin: 0 auto;
+}
+
+.name{
+  font-size: 10px;
+  padding: 5px;
+  background-color: darkblue;
+  color: white;
+}
+
+
+#promptUpgrade {
+  z-index: 5;
+  position: relative;
+  top: 56%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  margin-left: -100px;
+  margin-top: -200px;
+  -webkit-border-radius: 26px;
+  border: 2px solid lavender;
+  background: url(http://api.thumbr.it/whitenoise-361x370.png?background=f0edf0ff&noise=bab6ba&density=27&opacity=27);
+}
+
+#upgradeSubmit {
+  display: block;
+  margin-left: 80px;
+  margin-top: 20px;
+}
+
+#upgradeClose {
+  display: block;
+  margin-top: 20px;
+  margin-left: 82px;
 }
