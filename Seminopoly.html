@@ -6,247 +6,169 @@
 <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
 </head>
 <body bgcolor="#FFFFFF">
-<h1>Seminopoly</h1>
-<button id="begin">Start game!</button>
-<div id="dice">
-	<div id="dice1">&#9856;</div>
-	<div id="dice2">&#9856;</div>
-</div>
-<p id="roll">Roll the dice!<p>
+	<h1 class="mainHeading">Seminopoly</h1>
+	<button id="begin">Start game on normal mode!</button>
+	<button id="shuffle">Start game on shuffle mode!</button>
+	<div id="dice">
+		<div id="dice1">&#9856;</div>
+		<div id="dice2">&#9856;</div>
+	</div>
+	<p id="roll">Roll the dice!<p>
 
-<div id="playerStats">
-	<p style="text-decoration: underline;">Player Stats</p>
-	<p>Total cash: $<span id="playerCash"></span></p>
-	<p>Player move update: <span id="playerUpdate"></span></p>
-	<div class="pCard-cover">
-		<p class="name">Current properties<p>
-		<p>Scroll down to see properties in play</p>
-		<button id="buyUpgrades">Buy Upgrades</button><br>
-		<button id="mortageSth">Mortgage a Property</button>
+	<div id="playerStats">
+		<p style="text-decoration: underline;">Player Stats</p>
+		<p>Total cash: $<span id="playerCash"></span></p>
+		<p>Player move update: <div id="playerUpdate">Current status: none</div></p>
+		<div class="pCard-cover">
+			<p class="name">Current properties<p>
+			<p>Scroll down to see properties in play</p>
+			<button id="buyPropertyUpgrades">Buy Property Upgrades</button><br>
+			<button id="mortgageSth">Mortgage a Property</button>
+			<button id="unmortgageSth">Unmortgage a Property</button>
+			<button id="playerOffer">Buy Enemy Properties</button>
+			<button id="assetSummaryPlayer">View Asset Summary</button>
+			<p>Click and drag cards below to sort them!</p>
+		</div>
+		<div id="plist"></div>
 	</div>
-</div>
-
-<!-- Prompt examples -->
-<!-- <div class = "ucard">
-	<p>Price: $</p>
-	<p>Own 1: Pay 4 times dice roll</p>
-	<p>Own 2: Pay 10 times dice roll</p>
-	<p>Mortgage Value: $</p>
-</div> -->
-
-<!-- <div id="promptUpgrade">
-	<p>What would you like to upgrade?</p>
-	<select>
-		<option value="purple">purple</option>
-		<option value="red">red</option>
-	</select>
-	<button id="upgradeSubmit">Submit</button><br>
-	<button id="upgradeClose">Close</button><br>
-</div> -->
-
-<div id="board">
-	<div class="row">
-		<img src="images/Seminopoly_01.gif" class="p21">
-		<img src="images/Seminopoly_02.gif" class="p22">
-		<img src="images/Seminopoly_03.gif" class="p23">
-		<img src="images/Seminopoly_04.gif" class="p24">
-		<img src="images/Seminopoly_05.gif" class="p25">
-		<img src="images/Seminopoly_06.gif" class="p26">
-		<img src="images/Seminopoly_07.gif" class="p27">
-		<img src="images/Seminopoly_08.gif" class="p28">
-		<img src="images/Seminopoly_09.gif" class="p29">
-		<img src="images/Seminopoly_10.gif" class="p30">
-		<img src="images/Seminopoly_11.gif" class="p31">
-	</div>
-	<div class="row middle">
-		<img src="images/Seminopoly_13.gif">
-	</div>
-	<div class="row left">
-		<img src="images/Seminopoly_12.gif" class="p20">
-		<img src="images/Seminopoly_15.gif" class="p19">
-		<img src="images/Seminopoly_17.gif" class="p18">
-		<img src="images/Seminopoly_19.gif" class="p17">
-		<img src="images/Seminopoly_21.gif" class="p16">
-		<img src="images/Seminopoly_23.gif" class="p15">
-		<img src="images/Seminopoly_25.gif" class="p14">
-		<img src="images/Seminopoly_27.gif" class="p13">
-		<img src="images/Seminopoly_02.jpg" class="p12">
-	</div>
-	<div class="row right">
-		<img src="images/Seminopoly_14.gif" class="p32">
-		<img src="images/Seminopoly_16.gif" class="p33">
-		<img src="images/Seminopoly_18.gif" class="p34">
-		<img src="images/Seminopoly_20.gif" class="35">
-		<img src="images/Seminopoly_22.gif" class="p36">
-		<img src="images/Seminopoly_24.gif" class="p37">
-		<img src="images/Seminopoly_26.gif" class="p38">
-		<img src="images/Seminopoly_28.gif" class="p39">
-		<img src="images/Seminopoly_30.gif" class="p40">
-	</div>
-	<div class="row bottom">
-		<img src="images/Seminopoly_31.gif" class="p11">
-		<img src="images/Seminopoly_32.gif" class="p10">
-		<img src="images/Seminopoly_33.gif" class="p9">
-		<img src="images/Seminopoly_34.gif" class="p8">
-		<img src="images/Seminopoly_35.gif" class="p7">
-		<img src="images/Seminopoly_36.gif" class="p6">
-		<img src="images/Seminopoly_37.gif" class="p5">
-		<img src="images/Seminopoly_38.gif" class="p4">
-		<img src="images/Seminopoly_39.gif" class="p3">
-		<img src="images/wreck_room.gif" class="p2">
-	</div>
-	<div class="row extra">
-		<img src="images/go.gif" class="p1">
-	</div>
-</div>
-
-<!-- <table id="board" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td>
-			<img src="images/Seminopoly_01.gif" class="p21"></td>
-		<td>
-			<img src="images/Seminopoly_02.gif" class="p22"></td>
-		<td>
-			<img src="images/Seminopoly_03.gif" class="p23"></td>
-		<td>
-			<img src="images/Seminopoly_04.gif" class="p24"></td>
-		<td>
-			<img src="images/Seminopoly_05.gif" class="p25"></td>
-		<td>
-			<img src="images/Seminopoly_06.gif" class="p26"></td>
-		<td>
-			<img src="images/Seminopoly_07.gif" class="p27"></td>
-		<td>
-			<img src="images/Seminopoly_08.gif" class="p28"></td>
-		<td colspan="2">
-			<img src="images/Seminopoly_09.gif" class="p29"></td>
-		<td>
-			<img src="images/Seminopoly_10.gif" class="p30"></td>
-		<td colspan="2">
-			<img src="images/Seminopoly_11.gif" class="p31"></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/Seminopoly_12.gif" class="p20"></td>
-		<td colspan="11" rowspan="9">
-			<img src="images/Seminopoly_13.gif"></td>
-		<td>
-			<img src="images/Seminopoly_14.gif" class="p32"></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/Seminopoly_15.gif" class="p19"></td>
-		<td>
-			<img src="images/Seminopoly_16.gif" class="p33"></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/Seminopoly_17.gif" class="p18"></td>
-		<td>
-			<img src="images/Seminopoly_18.gif" class="p34"></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/Seminopoly_19.gif" class="p17"></td>
-		<td>
-			<img src="images/Seminopoly_20.gif" class="35"></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/Seminopoly_21.gif" class="p16"></td>
-		<td>
-			<img src="images/Seminopoly_22.gif" class="p36"></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/Seminopoly_23.gif" class="p15"></td>
-		<td>
-			<img src="images/Seminopoly_24.gif" class="p37"></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/Seminopoly_25.gif" class="p14"></td>
-		<td>
-			<img src="images/Seminopoly_26.gif" class="p38"></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/Seminopoly_27.gif" class="p13"></td>
-		<td>
-			<img src="images/Seminopoly_28.gif" class="p39"></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/Seminopoly_02.jpg" class="p12"></td>
-		<td>
-			<img src="images/Seminopoly_30.gif" class="p40"></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/Seminopoly_31.gif" class="p11"></td>
-		<td>
-			<img src="images/Seminopoly_32.gif" class="p10"></td>
-		<td>
-			<img src="images/Seminopoly_33.gif" class="p9"></td>
-		<td>
-			<img src="images/Seminopoly_34.gif" class="p8"></td>
-		<td>
-			<img src="images/Seminopoly_35.gif" class="p7"></td>
-		<td>
-			<img src="images/Seminopoly_36.gif" class="p6"></td>
-		<td>
-			<img src="images/Seminopoly_37.gif" class="p5"></td>
-		<td>
-			<img src="images/Seminopoly_38.gif" class="p4"></td>
-		<td>
-			<img src="images/Seminopoly_39.gif" class="p3"></td>
-		<td colspan="3">
-			<img src="images/wreck_room.gif" class="p2"></td>
-		<td>
-			<img src="images/go.gif" class="p1"></td>
-	</tr>
-	<tr class="spacers">
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-		<td>
-			<img src="images/spacer.gif"></td>
-	</tr>
-</table> -->
-
-<div id="enemyStats">
-	<p style="text-decoration: underline;">Enemy Stats</p>
-	<p>Total cash: $<span id="enemyCash"></span></p>
-	<p>Enemy move update: <span id="enemyUpdate"></span></p>
-	<div class="pCard-cover">
-		<p class="name">Current properties<p>
-		<p>Scroll down to see properties in play</p>
-	</div>
-</div>
 
 
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-<script src="app.js"></script>
+	<div id="helloMsg">
+		<h2>Welcome! Pick your game mode above</h2>
+	</div>
+
+	<!-- Asset summary examples -->
+	<!-- <div id="assetSummaryP">
+		<h1><span>Player</span>Summary</h2>
+		<p>Mortgaged Properties</p>
+		<select class="styled-select rounded">
+			<option>Laundry Room from green set</option>
+		</select>
+		<p>Properties in Play</p>
+		<select class="styled-select rounded"></select>
+		<p>Basic rent</p>
+		<select class="styled-select rounded"></select>
+		<p>On upgrade 1</p>
+		<select class="styled-select rounded"></select>
+		<p>On upgrade 2</p>
+		<select class="styled-select rounded"></select>
+		<p>On upgrade 3</p>
+		<select class="styled-select rounded"></select>
+		<p>On upgrade 4</p>
+		<select class="styled-select rounded"></select>
+		<button class="closeSummary">Close</button>
+	</div> -->
+
+	<!-- Prompt examples -->
+	<!-- <div class = "ucard">
+		<p>Price: $</p>
+		<p>Own 1: Pay 4 times dice roll</p>
+		<p>Own 2: Pay 10 times dice roll</p>
+		<p>Mortgage Value: $</p>
+	</div> -->
+
+	<!-- <div id="promptUpgrade">
+		<p>What would you like to upgrade?</p>
+		<select>
+			<option value="purple">purple</option>
+			<option value="red">red</option>
+		</select>
+		<button id="upgradeSubmit">Submit</button><br>
+		<button id="upgradeClose">Close</button><br>
+	</div> -->
+
+
+	<!-- <div id="promptOffer">
+		<p>What property would you like to make an offer on?</p>
+		<select>
+			<option value="purple">purple</option>
+			<option value="red">red</option>
+		</select>
+		<button id="upgradeSubmit">Submit</button><br>
+		<button id="upgradeClose">Close</button><br>
+	</div> -->
+
+	<!-- Chance/community card examples -->
+	<!-- <div id="chcCard">
+		<h2>Player</h2>
+		<img src="images/monopoly-man.jpg">
+		<h4>You are now playing the Mad Men edition of monopoly. Have a martini everytime you roll, move, or blink.</h4>
+		<p>Winner is the last person left with a full functioning liver.</p>
+		<button>Close</button>
+	</div> -->
+
+
+	<div id="noBoard">
+		<div class="row">
+			<img src="images/Seminopoly_01.gif" class="p21">
+			<img src="images/Seminopoly_02.gif" class="p22">
+			<img src="images/Seminopoly_03.gif" class="p23">
+			<img src="images/Seminopoly_04.gif" class="p24">
+			<img src="images/Seminopoly_05.gif" class="p25">
+			<img src="images/Seminopoly_06.gif" class="p26">
+			<img src="images/Seminopoly_07.gif" class="p27">
+			<img src="images/Seminopoly_08.gif" class="p28">
+			<img src="images/Seminopoly_09.gif" class="p29">
+			<img src="images/Seminopoly_10.gif" class="p30">
+			<img src="images/Seminopoly_11.gif" class="p31">
+		</div>
+		<div class="row middle">
+			<img src="images/Seminopoly_13.gif">
+		</div>
+		<div class="row left">
+			<img src="images/Seminopoly_12.gif" class="p20">
+			<img src="images/Seminopoly_15.gif" class="p19">
+			<img src="images/Seminopoly_17.gif" class="p18">
+			<img src="images/Seminopoly_19.gif" class="p17">
+			<img src="images/Seminopoly_21.gif" class="p16">
+			<img src="images/Seminopoly_23.gif" class="p15">
+			<img src="images/Seminopoly_25.gif" class="p14">
+			<img src="images/Seminopoly_27.gif" class="p13">
+			<img src="images/Seminopoly_02.jpg" class="p12">
+		</div>
+		<div class="row right">
+			<img src="images/Seminopoly_14.gif" class="p32">
+			<img src="images/Seminopoly_16.gif" class="p33">
+			<img src="images/Seminopoly_18.gif" class="p34">
+			<img src="images/Seminopoly_20.gif" class="p35">
+			<img src="images/Seminopoly_22.gif" class="p36">
+			<img src="images/Seminopoly_24.gif" class="p37">
+			<img src="images/Seminopoly_26.gif" class="p38">
+			<img src="images/Seminopoly_28.gif" class="p39">
+			<img src="images/Seminopoly_30.gif" class="p40">
+		</div>
+		<div class="row bottom">
+			<img src="images/Seminopoly_31.gif" class="p11">
+			<img src="images/Seminopoly_32.gif" class="p10">
+			<img src="images/Seminopoly_33.gif" class="p9">
+			<img src="images/Seminopoly_34.gif" class="p8">
+			<img src="images/Seminopoly_35.gif" class="p7">
+			<img src="images/Seminopoly_36.gif" class="p6">
+			<img src="images/Seminopoly_37.gif" class="p5">
+			<img src="images/Seminopoly_38.gif" class="p4">
+			<img src="images/Seminopoly_39.gif" class="p3">
+			<img src="images/wreck_room.gif" class="p2">
+			<img src="images/go.gif" class="p1">
+		</div>
+		<!-- <div class="row extra">
+			<img src="images/go.gif" class="p1">
+		</div> -->
+	</div>
+
+	<div id="enemyStats">
+		<p style="text-decoration: underline;">Enemy Stats</p>
+		<p>Total cash: $<span id="enemyCash"></span></p>
+		<p>Enemy move update: <div id="enemyUpdate">Current status: none</div></p>
+		<div class="pCard-cover">
+			<p class="name">Current properties<p>
+			<p>Scroll down to see properties in play</p>
+			<button id="assetSummaryEnemy">View Asset Summary</button>
+			<p>Click and drag cards below to sort them!</p>
+		</div>
+		<div id="elist"></div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+	<script src="app.js"></script>
+	<script src="sortable.min.js"></script>
 </body>
 </html>
