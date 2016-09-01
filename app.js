@@ -10,18 +10,11 @@
 
 var width = []
 
-setTimeout(showBoard,4000);
+setTimeout(showBoard,1000);
 
 function showBoard() {
   $("#helloMsg").fadeOut(600)
   $("#noBoard").fadeIn(1000).attr("id","board");
-  $(".row").children().each(function() {
-    width.push($(this).css("width"))
-    for(var i = 0; i < width.length; i++){
-      width[i]= parseInt(width[i])*0.15
-      $(this).css("width", width[i])
-    }
-  });
 }
 
 $("#plist").hide()
