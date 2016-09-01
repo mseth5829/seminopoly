@@ -10,7 +10,7 @@
 
 var width = []
 
-setTimeout(showBoard,600);
+setTimeout(showBoard,2000);
 
 function showBoard() {
   $("#helloMsg").fadeOut(600)
