@@ -711,14 +711,14 @@ function addPropertyUpgrade() {
       $.each(setToUpgrade, function(newRentStatus){this.rentStatus= "upgrade1"});
       playerCash -= (setToUpgrade[0].upgradeCost * setToUpgrade.length)
       updateCash();
-      $("#playerUpdate").text($(this).text()+"You just upgraded the "+ setToUpgrade[0].color+ " set")
+      $("#playerUpdate").text("You just upgraded the "+ setToUpgrade[0].color+ " set")
     } else {alert("You don't have enough cash :(")};
   }else if (setToUpgrade[0].rentStatus == "upgrade1"){
     if(playerCash >= (setToUpgrade[0].upgradeCost * setToUpgrade.length)){
       $.each(setToUpgrade, function(newRentStatus){this.rentStatus= "upgrade2"});
       playerCash -= (setToUpgrade[0].upgradeCost * setToUpgrade.length)
       updateCash();
-      $("#playerUpdate").text($(this).text()+"You just upgraded the "+ setToUpgrade[0].name+ " set")
+      $("#playerUpdate").text("You just upgraded the "+ setToUpgrade[0].name+ " set")
     } else {alert("You don't have enough cash :(")};
   }else if (setToUpgrade[0].rentStatus == "upgrade2"){
     if(playerCash >= (setToUpgrade[0].upgradeCost * setToUpgrade.length)){
@@ -732,7 +732,7 @@ function addPropertyUpgrade() {
       $.each(setToUpgrade, function(newRentStatus){this.rentStatus= "upgrade4"});
       playerCash -= (setToUpgrade[0].upgradeCost * setToUpgrade.length)
       updateCash();
-      $("#playerUpdate").text($(this).text()+"You just upgraded the "+ setToUpgrade[0].name+ " set")
+      $("#playerUpdate").text("You just upgraded the "+ setToUpgrade[0].name+ " set")
       }else {alert("You don't have enough cash :(")};
   }else if(setToUpgrade[0].rentStatus == "upgrade4"){
     alert("You already have the most stellar upgrades for this")
