@@ -122,6 +122,7 @@ function showStatus() {
 
 function playerUpdate(update) {
   $("#playerUpdate").text(update);
+  $("#noBoard").fadeIn(1000).attr("id","board");
 }
 
 function enemyUpdate(update) {
@@ -2385,7 +2386,10 @@ function makeEnemyOffer() {
     $(cardOnPage).removeClass();
     $(cardOnPage).addClass("pCard");
     cardOnPage.insertBefore(".hidePlayerProperties")
-
+    checkVansOwned()
+    checkUtilitiesOwned()
+    checkPropertiesOwnedEnemy()
+    checkPropertiesOwnedPlayer()
   }else {
     alert("The enemy scoffs at your offer. Try going a little higher.")
   }
@@ -2446,6 +2450,10 @@ function enemyOfferOptions() {
         $(cardOnPage).removeClass();
         $(cardOnPage).addClass("eCard");
         cardOnPage.insertBefore(".hideEnemyProperties")
+        checkVansOwned()
+        checkUtilitiesOwned()
+        checkPropertiesOwnedEnemy()
+        checkPropertiesOwnedPlayer()
       });
     }
   }
@@ -2453,11 +2461,6 @@ function enemyOfferOptions() {
 
 
 
-//Player gets box popping up that asks which one of enemy's properties he would like to buy and gives an offer
-//If offer is 40% above original price, enemy will accept, if not, enemy will give counter offer (40% above original price)
-
-//If enemy has an almost complete color set he will make an offer to the player for the last color (35% above asking)
-//If player rejects, the card will be given an object key/value pair of alreadyOffered = "yes", which means he won't make the offer again
 
 
 
