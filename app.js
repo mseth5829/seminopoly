@@ -245,6 +245,7 @@ function addpCard() {
     if(currentPosition.color == "yellow"){
       var name = $("<p>").addClass("name").text(currentPosition.name).css("background-color", currentPosition.color).css("color","black");
     }else{var name = $("<p>").addClass("name").text(currentPosition.name).css("background-color", currentPosition.color);}
+    var newCard = $("<li>").addClass("vCard");
     var l1 = $("<p>").text("Price: $"+ currentPosition.price+",Rent: $"+currentPosition.rent);
     var l2 = $("<p>").text("With minor upgrades: $"+ currentPosition.upgrade1);
     var l3 = $("<p>").text("With better upgrades: $"+ currentPosition.upgrade2);
@@ -891,7 +892,7 @@ function enemyBuyV () {
   var l5 = $("<p>").text("Own 4: $" + currentPosition.own4);
   var l6 = $("<p>").text("Mortgage Value: $" + currentPosition.mortgage);
   newCard.append(name).append(l1).append(l2).append(l3).append(l4).append(l5).append(l6);
-  $("#enemyStats").append(newCard);
+  newCard.appendTo("#elist")
   $("#promptp").remove();
   enemyCash -= currentPosition.price;
   updateCash();

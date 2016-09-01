@@ -1,9 +1,9 @@
 <html>
 <head>
-<title>Seminopoly</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
+	<title>Seminopoly</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
 </head>
 <body bgcolor="#FFFFFF">
 	<h1 class="mainHeading">Seminopoly</h1>
@@ -29,7 +29,6 @@
 			<button id="assetSummaryPlayer">View Asset Summary</button>
 			<p>Click and drag cards below to sort them!</p>
 		</div>
-		<div id="plist"></div>
 	</div>
 
 
@@ -165,9 +164,15 @@
 			<button id="assetSummaryEnemy">View Asset Summary</button>
 			<p>Click and drag cards below to sort them!</p>
 		</div>
-		<div id="elist"></div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+
+	<<h1 style= "margin-top:500px; margin-bottom:20px; text-align: center">PlayerDeck</h1>
+	<div id="plist"></div>
+	<div><h1 style="margin-top: 900px; margin-bottom:20px; text-align: center;">EnemyDeck</h1></div>
+	<div id="elist"></div>
+
+	<!-- <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script> -->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="app.js"></script>
 	<script src="sortable.min.js"></script>
 </body>
