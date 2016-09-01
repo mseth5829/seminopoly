@@ -145,6 +145,7 @@ h1 {
   float: left;
   text-align: center;
   margin-left: 50px;
+  margin-top: -150px;
 }
 
 #plist, #elist {
@@ -161,6 +162,10 @@ h1 {
   z-index: 8;
 }
 
+.robot {
+  z-index: 6;
+}
+
 #enemyStats {
   float: right;
   width: 200px;
@@ -168,6 +173,7 @@ h1 {
   height: 300px;
   margin-right: 110px;
   text-align: center;
+  margin-top: -150px;
 }
 
 #promptp {
@@ -364,7 +370,7 @@ h1 {
   }
 
   .playerDeckStart {
-    margin-top:1000px;
+    margin-top:1200px;
   }
 
 }
