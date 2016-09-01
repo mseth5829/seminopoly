@@ -1,9 +1,6 @@
 /*Problems/to do:
 
-Important
 -Create options for player to buy enemy's properties and vice versa?
-
-
 
 */
 
@@ -25,6 +22,32 @@ function showBoard() {
       $(this).css("width", width[i])
     }
   });
+}
+
+$("#plist").hide()
+$("#elist").hide()
+
+$(".showPlayerProperties").on("click",showPlayerProperties)
+$(".hidePlayerProperties").on("click",hidePlayerProperties)
+$(".showEnemyProperties").on("click",showEnemyProperties)
+$(".hideEnemyProperties").on("click",hideEnemyProperties)
+
+
+
+function showPlayerProperties() {
+    $("#plist").slideDown()
+}
+
+function hidePlayerProperties() {
+    $("#plist").slideUp()
+}
+
+function showEnemyProperties() {
+    $("#elist").slideDown()
+}
+
+function hideEnemyProperties() {
+    $("#elist").slideUp()
 }
 
 
@@ -152,10 +175,11 @@ function makeMove() {
     $("#enemy").removeAttr("id");
     enemyPosition = parseInt(enemyPosition.substr(1));
     if((enemyPosition+rollValue)>40){
+      enemyOfferOptions()
       enemyPosition = "p"+((enemyPosition+rollValue)-40);
       enemyCash += 200
-      enemyUpdate("Enemy passed go! Collect $200")
       updateCash();
+      enemyUpdate("Enemy passed go! Collect $200")
     }else{
       enemyPosition = "p"+(enemyPosition+rollValue);
     }
@@ -253,7 +277,7 @@ function addpCard() {
     var l5 = $("<p>").text("With stellar upgrades: $"+ currentPosition.upgrade4);
     var l6 = $("<p>").text("Upgrade Cost: $"+ currentPosition.upgradeCost+ "    " + ",Mortgage Value: $"+currentPosition.mortgage);
     newCard.append(name).append(l1).append(l2).append(l3).append(l4).append(l5).append(l6);
-    newCard.appendTo("#plist");
+    newCard.insertBefore(".hidePlayerProperties");
     $("#promptp").remove();
     playerCash -= currentPosition.price;
     updateCash();
@@ -327,7 +351,7 @@ function addvCard() {
     var l5 = $("<p>").text("Own 4: $" + currentPosition.own4);
     var l6 = $("<p>").text("Mortgage Value: $" + currentPosition.mortgage);
     newCard.append(name).append(l1).append(l2).append(l3).append(l4).append(l5).append(l6);
-    newCard.appendTo("#plist")
+    newCard.insertBefore(".hidePlayerProperties")
     $("#promptp").remove();
     playerCash -= currentPosition.price;
     updateCash();
@@ -388,7 +412,7 @@ function adduCard() {
     var l3 = $("<p>").text("Own 2: Pay 10 times dice roll");
     var l4 = $("<p>").text("Mortgage Value: $" + currentPosition.mortgage);
     newCard.append(name).append(l1).append(l2).append(l3).append(l4);
-    newCard.appendTo("#plist")
+    newCard.insertBefore(".hidePlayerProperties")
     $("#promptp").remove();
     playerCash -= currentPosition.price;
     updateCash();
@@ -839,7 +863,7 @@ function enemyBuyOptionp() {
   var l5 = $("<p>").text("With stellar upgrades: $"+ currentPosition.upgrade4);
   var l6 = $("<p>").text("Upgrade Cost: $"+ currentPosition.upgradeCost+ "    " + ",Mortgage Value: $"+currentPosition.mortgage);
   newCard.append(name).append(l1).append(l2).append(l3).append(l4).append(l5).append(l6);
-  newCard.appendTo("#elist")
+  newCard.insertBefore(".hideEnemyProperties")
   currentPosition.owned="enemy";
   currentPosition.inPlay="yes";
   enemyCash -= currentPosition.price;
@@ -883,7 +907,7 @@ function enemyBuyOptionv() {
 
 //Process of enemy purchasing van
 function enemyBuyV () {
-  var newCard = $("<div>").addClass("evCard");
+  var newCard = $("<li>").addClass("evCard");
   var name = $("<p>").addClass("name").text(currentPosition.name).css("background-color", currentPosition.color).css("color","white");
   var l1 = $("<p>").text("Price: $" + currentPosition.price);
   var l2 = $("<p>").text("Own 1: $" + currentPosition.own1);
@@ -892,7 +916,7 @@ function enemyBuyV () {
   var l5 = $("<p>").text("Own 4: $" + currentPosition.own4);
   var l6 = $("<p>").text("Mortgage Value: $" + currentPosition.mortgage);
   newCard.append(name).append(l1).append(l2).append(l3).append(l4).append(l5).append(l6);
-  newCard.appendTo("#elist")
+  newCard.insertBefore(".hideEnemyProperties")
   $("#promptp").remove();
   enemyCash -= currentPosition.price;
   updateCash();
@@ -935,7 +959,7 @@ function enemyBuyU() {
   var l3 = $("<p>").text("Own 2: Pay 10 times dice roll");
   var l4 = $("<p>").text("Mortgage Value: $" + currentPosition.mortgage);
   newCard.append(name).append(l1).append(l2).append(l3).append(l4);
-  newCard.appendTo("#elist")
+  newCard.insertBefore(".hideEnemyProperties")
   $("#promptp").remove();
   playerCash -= currentPosition.price;
   updateCash();
@@ -960,7 +984,6 @@ function enemyBuyU() {
 
 //Miscellaneous enemy strategies
 function executeEnemyStrategies() {
-  console.log("enemy here")
   enemyUpgrades();
 }
 
@@ -1161,7 +1184,7 @@ function createPlayerCards() {
       var l5 = $("<p>").text("With stellar upgrades: $"+ playerDeck[i].upgrade4);
       var l6 = $("<p>").text("Upgrade Cost: $"+ playerDeck[i].upgradeCost+ "    " + ",Mortgage Value: $"+playerDeck[i].mortgage);
       newCard.append(name).append(l1).append(l2).append(l3).append(l4).append(l5).append(l6);
-      newCard.appendTo("#plist")
+      newCard.insertBefore(".hidePlayerProperties")
       $("#promptp").remove();
       playerDeck[i].owned="player";
       playerDeck[i].rentStatus="basic";
@@ -1176,7 +1199,7 @@ function createPlayerCards() {
       var l5 = $("<p>").text("Own 4: $" + playerDeck[i].own4);
       var l6 = $("<p>").text("Mortgage Value: $" + playerDeck[i].mortgage);
       newCard.append(name).append(l1).append(l2).append(l3).append(l4).append(l5).append(l6);
-      newCard.appendTo("#plist")
+      newCard.insertBefore(".hidePlayerProperties")
       playerDeck[i].owned="player";
       playerDeck[i].inPlay="yes";
       checkVansOwned();
@@ -1205,7 +1228,7 @@ function createPlayerCards() {
       var l3 = $("<p>").text("Own 2: Pay 10 times dice roll");
       var l4 = $("<p>").text("Mortgage Value: $" + playerDeck[i].mortgage);
       newCard.append(name).append(l1).append(l2).append(l3).append(l4);
-      newCard.appendTo("#plist")
+      newCard.insertBefore(".hidePlayerProperties")
       playerDeck[i].owned="player";
       playerDeck[i].inPlay="yes";
       playerDeck[i].rentStatus="own1";
@@ -1245,7 +1268,7 @@ function createEnemyCards() {
       var l5 = $("<p>").text("With stellar upgrades: $"+ enemyDeck[i].upgrade4);
       var l6 = $("<p>").text("Upgrade Cost: $"+ enemyDeck[i].upgradeCost+ "    " + ",Mortgage Value: $"+enemyDeck[i].mortgage);
       newCard.append(name).append(l1).append(l2).append(l3).append(l4).append(l5).append(l6);
-      newCard.appendTo("#elist")
+      newCard.insertBefore(".hideEnemyProperties")
       $("#promptp").remove();
       enemyDeck[i].owned="enemy";
       enemyDeck[i].rentStatus="basic";
@@ -1260,7 +1283,7 @@ function createEnemyCards() {
       var l5 = $("<p>").text("Own 4: $" + enemyDeck[i].own4);
       var l6 = $("<p>").text("Mortgage Value: $" + enemyDeck[i].mortgage);
       newCard.append(name).append(l1).append(l2).append(l3).append(l4).append(l5).append(l6);
-      newCard.appendTo("#elist")
+      newCard.insertBefore(".hideEnemyProperties")
       enemyDeck[i].owned="enemy";
       enemyDeck[i].inPlay="yes";
       checkVansOwned();
@@ -1289,7 +1312,7 @@ function createEnemyCards() {
       var l3 = $("<p>").text("Own 2: Pay 10 times dice roll");
       var l4 = $("<p>").text("Mortgage Value: $" + enemyDeck[i].mortgage);
       newCard.append(name).append(l1).append(l2).append(l3).append(l4);
-      newCard.appendTo("#elist")
+      newCard.insertBefore(".hideEnemyProperties")
       enemyDeck[i].owned="enemy";
       enemyDeck[i].inPlay="yes";
       enemyDeck[i].rentStatus="own1";
@@ -2317,24 +2340,6 @@ var chanceCards =
 
 
 /* Puchasing/selling properties between player and enemy ************************************************************************************************************************************************/
-var almostCompletePropertyNumber = [1,2,2,2,2,2,2,1];
-var almostCompleteSetsOwnedEnemy = [];
-
-
-function checkEnemyAlmostCompleteSets() {
-  almostCompleteSetsOwnedEnemy = [];
-  for(var i = 0; i<propertyColors.length; i++){
-    function getColor(obj){
-      if(obj.color == propertyColors[i] && obj.owned == "enemy" && obj.inPlay == "yes"){
-        return true
-      }
-    }
-    var ownedStatus = propertyCards.filter(getColor);
-    if(ownedStatus.length == almostCompletePropertyNumber[i]){
-      almostCompleteSetsOwnedEnemy.push(propertyColors[i]);
-    }
-  }
-}
 
 $("#playerOffer").on("click",offerOptions)
 
@@ -2360,29 +2365,91 @@ function offerOptions() {
 
 function makeEnemyOffer() {
   var chosenProperty = $('select').val()
-  console.log(chosenProperty)
-  var moneyOffered = $('input').val()
+  var moneyOffered = parseInt($('input').val());
   function getProperty (obj){
     if(obj.name == chosenProperty){
       return true
     }
   }
   var propertyOfferMadeOn = propertyCards.filter(getProperty);
-  if((propertyOfferMadeOn[0].price*1.4) <= moneyOffered){
+  if(propertyOfferMadeOn[0].rentStatus !== "basic" && propertyOfferMadeOn[0].price*6){
+  } else if((propertyOfferMadeOn[0].price*3) <= moneyOffered){
     playerCash -= moneyOffered
     enemyCash += moneyOffered
+    updateCash()
     playerUpdate("You just bought "+ chosenProperty+ " from the enemy!")
     propertyOfferMadeOn[0].owned= "player"
-    console.log(propertyOfferMadeOn.owner)
     var lookFor = "p:contains('"+chosenProperty+"')"
+    console.log(lookFor)
     var cardOnPage = $(lookFor).parent()
     $(cardOnPage).removeClass();
-    $(cardOnPage).addClass("pCard")
+    $(cardOnPage).addClass("pCard");
+    cardOnPage.insertBefore(".hidePlayerProperties")
+
   }else {
     alert("The enemy scoffs at your offer. Try going a little higher.")
   }
 }
 
+
+var almostCompletePropertyNumber = [1,2,2,2,2,2,2,1];
+var almostCompleteSetsOwnedEnemy = [];
+var setNumber = 0
+
+function checkEnemyAlmostCompleteSets() {
+  almostCompleteSetsOwnedEnemy = [];
+  for(var i = 0; i<propertyColors.length; i++){
+    function getColor(obj){
+      if(obj.color == propertyColors[i] && obj.owned == "enemy" && obj.inPlay == "yes"){
+        return true
+      }
+    }
+    var ownedStatus = propertyCards.filter(getColor);
+    if(ownedStatus.length == almostCompletePropertyNumber[i]){
+      almostCompleteSetsOwnedEnemy.push(propertyColors[i]);
+    }
+  }
+}
+
+
+function enemyOfferOptions() {
+  checkEnemyAlmostCompleteSets();
+  var color = almostCompleteSetsOwnedEnemy[setNumber]
+  function getColor(obj){
+    if(obj.color == almostCompleteSetsOwnedEnemy[setNumber] && obj.owned == "player"){
+      return true
+    }
+  }
+  var playerCardWanted = propertyCards.filter(getColor);
+  if(playerCardWanted.length == 1){
+    var priceOffered = playerCardWanted[0].price * 2.5
+    if(enemyCash+250>priceOffered){
+      var newPrompt = $("<div>").attr("id","promptOffer").css("height","100px").css("margin-top", "-100px").css("top","40%");
+      var qn = $("<p>").text("Enemy would like to make an offer of "+priceOffered+ " on "+ playerCardWanted[0].name);
+      var button1 = $("<button>").attr("id","offerAccept").text("Accept");
+      var button2 = $("<button>").attr("id","offerReject").text("Reject");
+      newPrompt.append(qn).append(button1).append(button2);
+      newPrompt.insertAfter("#playerStats");
+      $("#offerReject").on("click", function(){$("#promptOffer").remove()});
+      $("#offerReject").on("click", function(){
+        setNumber += 1
+      });
+      $("#offerAccept").on("click", function(){$("#promptOffer").remove()});
+      $("#offerAccept").on("click", function(){
+        playerCash += priceOffered;
+        enemyCash -= priceOffered;
+        updateCash();
+        enemyUpdate("You just sold "+ playerCardWanted[0].name + " to the enemy!")
+        playerCardWanted[0].owned= "enemy"
+        var lookFor = "p:contains('"+playerCardWanted[0].name+"')"
+        var cardOnPage = $(lookFor).parent()
+        $(cardOnPage).removeClass();
+        $(cardOnPage).addClass("eCard");
+        cardOnPage.insertBefore(".hideEnemyProperties")
+      });
+    }
+  }
+}
 
 
 
